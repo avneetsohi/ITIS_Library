@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body{
+    overflow-x: hidden;
+}
+
+.homepage_bg{
+    background: url("../src/assets/Images/bghome.svg");
+}
+
+.highlighted-text1{
+    background: linear-gradient(118deg,#1FA2FF -3.62%, #12D8FA 50.44%, #A6FFCB 104.51%);
+    color:transparent;
+    -webkit-background-clip:text;
+    background-clip: text;
+}
+
+.highlighted-text2{
+  background: linear-gradient(118deg, #FF512F -4.8%, #F09819 107.46%);
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip: text;
+}
+
+.highlighted-text3{
+  background: linear-gradient(118deg, #833AB4 -2.4%, #FD1D1D 52.25%, #FCB045 106.89%);
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip: text;
+}
+
+.highlighted-text4{
+  background: linear-gradient(118deg, #E65C00 -6.05%, #F9D423 106.11%);
+  color:transparent;
+  -webkit-background-clip:text;
+  background-clip: text;
+}
+
+
+
+.active{
+    color:#FFE83D
+}
+
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  border:4px solid #0000;
+  border-radius: 50%;
+  border-color:#E4E4ED #0000;
+  animation: s6 1s infinite linear;
+}
+.custom-loader::before,
+.custom-loader::after {    
+  content:"";
+  grid-area: 1/1;
+  margin:2px;
+  border:inherit;
+  border-radius: 50%;
+}
+.custom-loader::before {
+  border-color:#0000 #FFE83D;
+  animation:inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.custom-loader::after {
+  margin:8px;
+}
+
+@keyframes s6 { 
+  100%{transform: rotate(1turn)}
+}
+
+  
+ 
