@@ -5,11 +5,11 @@ const booksSchema = new mongoose.Schema({
   bookTitle: { type: String },
   bookDescription: { type: String },
   author: {
-    type: [String],
+    type: String,
     required: true,
   },
   year:{
-    type:Number,
+    type:String,
     required:true
   },
   ratings: {
@@ -19,15 +19,20 @@ const booksSchema = new mongoose.Schema({
   downloads:{
     type:Number
   },
+  accessLink:{
+    type:String
+  },
   thumbnail: {
     type: String,
   },
-  category: {
+  category: [
+    {
     
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref:"Category"
-  },
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref:"Category"
+    }
+  ],
   createdAt: { type: Date, default: Date.now }
 })
 

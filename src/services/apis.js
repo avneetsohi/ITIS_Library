@@ -2,7 +2,8 @@ const BASE_URL=process.env.REACT_APP_BASE_URL
 
 export const categories={
     SHOWCATEGORIES_API:BASE_URL + "/category/get-all-categories",
-    GET_CATEGORY_DETAILS_PAGE_API:BASE_URL + "/categories/categoryPage"
+    GET_CATEGORY_DETAILS_PAGE_API:BASE_URL + "/categories/categoryPage",
+    GET_CATEGORY:BASE_URL + "/categories/category-page"
 }
 
 export const resetPassword={

@@ -46,3 +46,24 @@ exports.getAllCategories = async (req,res) => {
         })  
     }
 }
+
+exports.getCategory = async(req,res) => {
+    try{
+        const {genreName}=req.body
+
+        const categoryResponse=await Category.find({name:genreName})
+
+        return res.status(200).json({
+            success:true,
+            data:categoryResponse,
+            message:"Fetched the Category"
+        })
+
+    }catch(error){
+        console.log(error.message)
+        return res.status(400).json({
+            success:false,
+            error:"Something went wrong"
+        })
+    }
+}
