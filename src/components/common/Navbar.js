@@ -15,18 +15,18 @@ export const Navbar = () => {
     const {token} = useSelector((state)=>state.auth)
     const {user} = useSelector((state)=>state.profile)
 
-    const [genres,setGenres]=useState([]);
+    const [sublinks,setSublinks]=useState([]);
     const [loading,setLoading]=useState(false);
     const dispatch=useDispatch();
 
     const [open,setOpen]=useState(false)
 
-    async function fetchGenres(){
+    async function fetchSubLinks(){
         try{
             setLoading(true);
             const result=await apiConnector('GET',categories.SHOWCATEGORIES_API);
             console.log("Fetched links",result)
-            setGenres(result?.data?.data);
+            setSublinks(result?.data?.data);
             setLoading(false)
         }catch(error){
             setLoading(false);
@@ -37,7 +37,7 @@ export const Navbar = () => {
     }
 
     useEffect(()=>{
-        fetchGenres();
+        fetchSubLinks();
     },[])
 
   return (
@@ -57,14 +57,14 @@ export const Navbar = () => {
                                     <FaChevronDown />
                                     {
                                         loading?(<div className='absolute -left-32 bottom-[-45px] bg-richblack-5 w-[280px] text-center text-lg invisible  group-hover:visible z-10 py-2 px-3 rounded-md text-richblack-400'>Loading...</div>):(
-                                            <div className='absolute -left-32 bottom-[-297px] bg-richblack-5 w-[280px] text-richblack-900 flex flex-col text-lg invisible rounded-md py-4 px-3 group-hover:visible z-10'>
+                                            <div className='absolute -left-32 bottom-[-165px] bg-richblack-5 w-[280px] text-richblack-900 flex flex-col text-lg invisible rounded-md py-4 px-3 group-hover:visible z-10'>
                                                 {
-                                                    genres.map((genre,index)=>(
-                                                        <Link key={index} to={`/genre/${genre.name.toLowerCase().replace(" ","-")}`} className='py-2 px-3 hover:bg-richblack-100 rounded-md'
+                                                    sublinks.map((sublink,index)=>(
+                                                        <Link key={index} to={`/genre/${sublink.name.toLowerCase().replace(" ","-")}`} className='py-2 px-3 hover:bg-richblack-100 rounded-md'
                                                         onClick={()=>{
-                                                            dispatch(setCategory(genre))
+                                                            dispatch(setCategory(sublink))
                                                         }}>
-                                                            {genre.name}
+                                                            {sublink.name}
                                                         </Link>
                                                     ))
                                                 }
