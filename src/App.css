@@ -75,5 +75,8 @@ html,body{
   100%{transform: rotate(1turn)}
 }
 
+canvas.react-pdf__Page__canvas{
+  margin-bottom: 50px;
+}
   
  

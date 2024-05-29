@@ -1,4 +1,14 @@
 const Book = require("../models/Book");
+const {google}=require("googleapis")
+const fs = require("fs")
+const path = require("path")
+require("dotenv").config();
+
+
+const client_secret = process.env.CLIENT_SECRET
+const client_id = process.env.client_id
+const redirect_uris= process.env.REDIRECT_URIS
+
 
 exports.createBook = async(req,res) => {
     try{
@@ -53,7 +63,6 @@ exports.getAllBooks=async(req,res)=>{
     try{
         const {fil,searchVal}=req.body
         var booksDetails
-        console.log(fil)
         if(fil==='All'){
             booksDetails=await Book.find({})
                                     .populate("category")

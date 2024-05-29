@@ -13,6 +13,15 @@ import { Home } from "./pages/Home";
 import { Error } from "./pages/Error";
 import { Genre } from "./pages/Genre";
 
+import { pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/TextLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.js',
+  import.meta.url,
+).toString();
+
+
 function App(){
 
   const [overlayStatus,setOverlayStatus]=useState(false);

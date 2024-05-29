@@ -22,5 +22,5 @@ export const auth={
 
 export const books={
     GENRE_BOOKS_API:BASE_URL + "/book/get-genre-books",
-    ALL_BOOKS_API:BASE_URL + "/book/get-all-books"
+    ALL_BOOKS_API:BASE_URL + "/book/get-all-books",
 }

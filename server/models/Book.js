@@ -22,8 +22,15 @@ const booksSchema = new mongoose.Schema({
   accessLink:{
     type:String
   },
+  accessID:{
+    type:String
+  },
   thumbnail: {
     type: String,
+  },
+  filePath:{
+    type:String,
+    required:true
   },
   category: [
     {

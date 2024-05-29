@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import apiConnector from '../services/apiconnector'
 import { books } from '../services/apis'
 import toast from 'react-hot-toast'
 import { BooksGrid } from '../components/common/BooksGrid'
 import { FILTER_TYPE } from '../utils/constants'
+import BookPreview from '../components/common/BookPreview'
+
 
 export const Dashboard = () => {
   
@@ -16,6 +18,7 @@ export const Dashboard = () => {
   const [loading,setLoading]=useState(false)
   const [searchValue,setSearchValue]=useState('')
   const [filter,setFilter]=useState('All')
+  const {previewStatus}=useSelector((state)=>state.book)
  
   const fetchAllBooks = async(searchVal='',fil='All') => {
     try{
@@ -81,6 +84,9 @@ export const Dashboard = () => {
                         ):(
                             <BooksGrid booksList={booksList}/>
                         )
+                    }
+                    {
+                      previewStatus && <BookPreview/>  
                     }
                 </div>
               </div>

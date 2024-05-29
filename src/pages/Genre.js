@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import { useParams } from 'react-router-dom'
 import { BooksGrid } from '../components/common/BooksGrid'
 import { setCategory } from '../slices/categorySlice'
+import BookPreview from '../components/common/BookPreview'
 
 export const Genre = () => {
 
@@ -14,6 +15,7 @@ export const Genre = () => {
   const [loading,setLoading]=useState(false)
   const {genreName}=useParams()
   const dispatch = useDispatch()
+  const {previewStatus}=useSelector((state)=>state.book)
   
 
   
@@ -96,6 +98,9 @@ export const Genre = () => {
                                                 )
                                             }
                                        </div>
+                                       {
+                                            previewStatus && <BookPreview/>  
+                                       }
                                 </div>
                             </div>
                         )

@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const { signup, login, sendOTP } = require("../controllers/Auth");
-const { createBook, getGenreSpecificBooks, getAllBooks } = require("../controllers/Book");
+const { createBook, getGenreSpecificBooks, getAllBooks, downloadBook } = require("../controllers/Book");
 const { resetPasswordToken, resetPassword } = require("../controllers/ResetPassword");
 const { createCategory, getAllCategories, getCategory } = require("../controllers/Category");
 
