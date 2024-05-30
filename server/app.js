@@ -12,13 +12,15 @@ const cors=require("cors");
 
 require("dotenv").config();
 
-const PORT=process.env.PORT || 3000;
+const PORT=process.env.PORT || 8000;
 
 // const options = {
 //     key: fs.readFileSync(path.resolve('C:/Windows/System32/localhost-key.pem')),
 //     cert: fs.readFileSync(path.resolve('C:/Windows/System32/localhost.pem'))
 // };
 
+const buildpath = path.join(__dirname,"../build")
+app.use(express.static(buildpath))
 
 // middlewares
 app.use(express.json());
