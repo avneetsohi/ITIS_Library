@@ -41,7 +41,7 @@ export const Navbar = () => {
     },[])
 
   return (
-    <div className=' w-full h-[60px]  bg-richblack-800 border border-richblack-700' >
+    <div className='fixed w-full h-[60px]  bg-richblack-800 border border-richblack-700' >
         <div className='w-11/12 max-w-maxContent flex mx-auto px-3 justify-between items-center gap-12 h-full'>
             <Link to='/' >
                 <img src={Logo} alt='Logo' loading='lazy' width={162} height={42}/>
@@ -90,7 +90,7 @@ export const Navbar = () => {
 
                 {
                     token!==null && 
-                    <div className='relative flex  items-center gap-[5px] cursor-pointer' onClick={()=>{setOpen(!open);console.log("Button clicking");}}>
+                    <div className='relative flex  items-center gap-[5px] cursor-pointer' onClick={()=>{setOpen(!open);}}>
                         <img src={user?.image} alt={`profile-${user?.firstName}`} className='rounded-full' height={25} width={25}/>
                         <AiOutlineCaretDown fontSize={18}/>
                         {open && <ProfileDropDown user={user} open={open} setOpen={setOpen}/>}

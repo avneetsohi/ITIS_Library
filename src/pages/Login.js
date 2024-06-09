@@ -55,6 +55,7 @@ export const Login = () => {
       navigate("/dashboard");
     }catch(error){
       console.log("Login failed response error...",error)
+      toast.error(error.response.data.message)
       toast.error('Login attempt unsuccessfull');
     }
     dispatch(setLoading(false));

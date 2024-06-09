@@ -1,5 +1,4 @@
 const express= require("express")
-const app=express();
 const { connect } = require("./config/database");
 const routes = require("./routes/Routes");
 const cookieParser = require("cookie-parser");
@@ -7,26 +6,22 @@ const fs = require("fs")
 const path = require("path")
 const https = require('https');
 const http = require('http');
-
 const cors=require("cors");
-
 require("dotenv").config();
+
+const app=express();
 
 const PORT=process.env.PORT || 8000;
 
-// const options = {
-//     key: fs.readFileSync(path.resolve('C:/Windows/System32/localhost-key.pem')),
-//     cert: fs.readFileSync(path.resolve('C:/Windows/System32/localhost.pem'))
-// };
-
-const buildpath = path.join(__dirname,"../build")
+const buildpath = path.resolve("../build")
 app.use(express.static(buildpath))
+console.log(buildpath)
+
 
 // middlewares
 app.use(express.json());
 
 app.use(cookieParser())
-
 
 
 app.use(
@@ -35,7 +30,6 @@ app.use(
         credentials:true
     })
 )
-
 
 
 // routes
@@ -54,13 +48,34 @@ app.get("/",(req,res)=>{
     res.send("Backend Running")
 })
 
-// https.createServer(options, app).listen(443, () => {
-//     console.log('Secure server running on port 443');
-// });
-
-// http.createServer((req, res) => {
-//   res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-//   res.end();
-// }).listen(80);
 
 
+
+// const PORT=process.env.PORT || 8000;
+
+// // middlewares
+// app.use(express.json());
+
+// app.use(cookieParser())
+
+// app.use(
+//     cors({
+//         origin:"http://localhost:3000",
+//         credentials:true
+//     })
+// )
+
+// app.get('/',(req,res,next)=>{
+//     res.send("Hello from SSL Server")
+// })
+
+// app.use("/api/v1",routes)
+
+// const sslServer=https.createServer({
+//     key: fs.readFileSync(path.join(__dirname,'cert','key.pem')),
+//     cert: fs.readFileSync(path.join(__dirname,'cert','cert.pem'))
+// },app)
+
+// sslServer.listen(PORT,()=>console.log(`Secure server running on PORT ${PORT}`))
+
+// connect();

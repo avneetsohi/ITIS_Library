@@ -71,14 +71,17 @@ export const Signup = () => {
         dispatch(setLoading(true));
         try{
             const response=await apiConnector("POST",auth.SEND_OTP_API,{email});
-            if(!response.data.success){
-                throw new Error(response.data.message)
+            if(!response?.data?.success){
+                throw new Error(response?.data?.message)
             }
             navigate("/verify-email");
             toast.success("OTP sent successfully");
         }catch(error){
             console.log("OTP API ERROR",error);
-            toast.error("Sign up Failed")
+            if (error.response.data.message==='User already exists'){
+                toast.error(error.response.data.message)
+            }
+            toast.error("Singup Failed")
             dispatch(setSignupData(null));
             navigate("/signup")
         }

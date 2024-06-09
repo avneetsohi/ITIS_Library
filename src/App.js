@@ -24,10 +24,8 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 function App(){
 
-  const [overlayStatus,setOverlayStatus]=useState(false);
-
   return (
-    <div className={`${overlayStatus?"fixed":""} w-screen min-h-screen bg-richblack-900 flex flex-col font-inter`}>
+    <div className={` w-screen min-h-screen bg-richblack-900 flex flex-col font-inter`}>
       
       <Navbar/>
       <Routes>
